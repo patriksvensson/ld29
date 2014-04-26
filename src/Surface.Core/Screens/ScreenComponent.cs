@@ -55,7 +55,7 @@ namespace Surface.Core.Screens
 
             if (_screens.Count == 0)
             {
-                this.Game.Exit();
+                Game.Exit();
             }
         }
 

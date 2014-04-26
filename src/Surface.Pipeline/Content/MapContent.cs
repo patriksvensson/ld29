@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
+using Surface.Core.Primitives;
 
 namespace Surface.Pipeline.Content
 {
     public class MapContent
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public Size Size { get; set; }
 
         public List<TilesetReference> Tilesets { get; set; }
         public List<TileLayerContent> Layers { get; set; }

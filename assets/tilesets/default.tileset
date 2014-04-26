@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tileset asset="textures/tilesets/default">
+
+	<tile x="0" y="0" type="Wall" />
+	<tile x="1" y="0" type="Wall" />
+
+	<!-- Water -->
+	<tile x="1" y="1" type="Water" />
+	<tile x="2" y="1" type="Water">
+		<frame x="2" y="1" delay="150" />
+		<frame x="3" y="1" delay="150" />
+	</tile>
+	<tile x="3" y="1" type="Water" >
+		<frame x="3" y="1" delay="150" />
+		<frame x="2" y="1" delay="150" />
+	</tile>
+
+	<!-- Water background -->
+	<tile x="0" y="3" type="Nothing" >
+		<frame x="0" y="3" delay="150" />
+		<frame x="1" y="3" delay="150" />
+		<frame x="2" y="3" delay="150" />
+		<frame x="3" y="3" delay="150" />
+		<frame x="2" y="3" delay="150" />
+		<frame x="1" y="3" delay="150" />
+	</tile>	
+
+</tileset>

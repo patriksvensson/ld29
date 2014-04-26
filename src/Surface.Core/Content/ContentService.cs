@@ -34,7 +34,7 @@ namespace Surface.Core.Content
             }
             using (var stream = _resolver.GetStream(path))
             {
-                var context = new ContentReaderContext(stream, _device);
+                var context = new ContentReaderContext(stream, _device, this);
                 return (T) _readers[typeof (T)].Read(context); // lol
             }
         }

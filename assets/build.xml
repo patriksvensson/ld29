@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <build version="1.0">
-	<asset path="textures/tilesets/lol.png">
-		<metadata key="scale">4</metadata>
-	</asset>
+	<asset path="textures/tilesets/default.png" />
 	<asset path="maps/level.tmx" />
+	<asset path="tilesets/default.tileset" />
+	<asset path="textures/player.png" />
+	<asset path="textures/playersheet.png" />
 </build>

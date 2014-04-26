@@ -138,7 +138,7 @@ namespace Surface.Core.Screens
                 // If the screen is going away to die, it should transition off.
                 _state = ScreenState.FadingOut;
 
-                if (!this.UpdateTransition(gameTime, _transitionOffTime, 1))
+                if (!UpdateTransition(gameTime, _transitionOffTime, 1))
                 {
                     // When the transition finishes, remove the screen.					
                     _owner.Pop(this);
@@ -147,16 +147,16 @@ namespace Surface.Core.Screens
             else if (_isCovered)
             {
                 // If the screen is covered by another, it should transition off.
-                _state = this.UpdateTransition(gameTime, _transitionOffTime, 1) ? ScreenState.FadingOut : ScreenState.Hidden;
+                _state = UpdateTransition(gameTime, _transitionOffTime, 1) ? ScreenState.FadingOut : ScreenState.Hidden;
             }
             else
             {
                 // Otherwise the screen should transition on and become active.
-                _state = this.UpdateTransition(gameTime, _transitionOnTime, -1) ? ScreenState.FadingIn : ScreenState.FullyVisible;
+                _state = UpdateTransition(gameTime, _transitionOnTime, -1) ? ScreenState.FadingIn : ScreenState.FullyVisible;
             }
 
             // Update the screen for real.
-            this.Update(gameTime);
+            Update(gameTime);
         }
 
         private bool UpdateTransition(GameTime gameTime, TimeSpan time, int direction)

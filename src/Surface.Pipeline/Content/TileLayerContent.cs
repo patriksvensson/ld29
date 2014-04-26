@@ -7,6 +7,7 @@ namespace Surface.Pipeline.Content
         public int Id { get; set; }
         public string Name { get; set; }
         public List<TileContent> Tiles { get; set; }
+        public float Opacity { get; set; }
 
         public TileLayerContent()
         {

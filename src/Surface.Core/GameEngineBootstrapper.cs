@@ -39,29 +39,26 @@ namespace Surface.Core
             _kernel.Bind<GameEngine>().ToSelf().InSingletonScope();
             _kernel.Bind<KeyboardInput>().ToSelf().InSingletonScope();
 
-            // TODO: Really do something about this...
+            // Register services.
+            _kernel.Bind<IContentService>().To<ContentService>().InSingletonScope();
+            _kernel.Bind<IContentResolver>().To<FileSystemResolver>().InSingletonScope();
+            _kernel.Bind<VirtualScreen>().ToSelf().InSingletonScope();
+
+            // Register readers.
+            _kernel.Bind<IContentReader>().To<SurfaceTextureReader>().InSingletonScope();
+            _kernel.Bind<IContentReader>().To<SceneReader>().InSingletonScope();
+            _kernel.Bind<IContentReader>().To<TilesetReader>().InSingletonScope();
 
             // Resolve the engine and bind the graphics device.
             var engine = _kernel.Get<GameEngine>();
             engine.SetInitializeCallback(e =>
             {
-                // Since we need to register the graphics device before
-                // setting the first screen, we do things this way...
                 _kernel.Bind<GraphicsDevice>().ToConstant(e.GraphicsDevice);
-
-                _kernel.Bind<VirtualScreen>().ToSelf().InSingletonScope();
-
-                // Register services.
-                _kernel.Bind<IContentService>().To<ContentService>().InSingletonScope();
-                _kernel.Bind<IContentResolver>().To<FileSystemResolver>().InSingletonScope();
-                
-                // Register readers.
-                _kernel.Bind<IContentReader>().To<SurfaceTextureReader>().InSingletonScope();
-
-                // Set the initial screen.
                 e.SetFirstScreen(_kernel.Get<T>());
             });
-            engine.Run(GameRunBehavior.Synchronous);
+
+            // Run the game.
+            engine.Run();
         }
 
         private static void RegisterServicesDependentOnGraphicsDevice(GameEngine engine)

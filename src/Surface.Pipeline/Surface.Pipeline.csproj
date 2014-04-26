@@ -55,9 +55,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryWriterExtensions.cs" />
+    <Compile Include="Content\TilesetFrameContent.cs" />
+    <Compile Include="Content\TilesetTileContent.cs" />
+    <Compile Include="FilePathExtensions.cs" />
+    <Compile Include="ImageHelper.cs" />
     <Compile Include="Importers\TextureImporter.cs" />
     <Compile Include="Importers\TiledImporter.cs" />
     <Compile Include="Content\MapContent.cs" />
+    <Compile Include="Content\TilesetContent.cs" />
+    <Compile Include="Importers\TilesetImporter.cs" />
     <Compile Include="Processors\TextureProcessor.cs" />
     <Compile Include="Processors\TiledProcessor.cs" />
     <Compile Include="Content\TileContent.cs" />
@@ -65,15 +72,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Content\TextureContent.cs" />
     <Compile Include="Content\TilesetReference.cs" />
+    <Compile Include="StringExtensions.cs" />
     <Compile Include="Writers\MapWriter.cs" />
     <Compile Include="Writers\TextureWriter.cs" />
+    <Compile Include="Writers\TilesetWriter.cs" />
+    <Compile Include="XmlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Surface.Core\Surface.Core.csproj">
+      <Project>{265c0c79-75fc-492c-874f-c3a44064325d}</Project>
+      <Name>Surface.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy $(TargetPath) $(SolutionDir)..\tools /y</PostBuildEvent>
+    <PostBuildEvent>xcopy $(TargetPath) $(SolutionDir)..\tools /y
+xcopy $(TargetDir)Surface.Core.dll $(SolutionDir)..\tools /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

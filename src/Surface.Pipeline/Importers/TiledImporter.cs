@@ -20,7 +20,8 @@ namespace Surface.Pipeline.Importers
             var reader = new TiledReader();
             using (var stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                return reader.Read(XDocument.Load(stream));   
+                var doc = XDocument.Load(stream);
+                return reader.Read(doc);   
             }            
         }
     }

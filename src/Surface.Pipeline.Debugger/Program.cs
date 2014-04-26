@@ -7,6 +7,7 @@ using Lunt.Diagnostics;
 using Lunt.IO;
 using Lunt.Runtime;
 using Surface.Pipeline.Importers;
+using Path = System.IO.Path;
 
 namespace Surface.Pipeline.Debugger
 {
@@ -25,7 +26,7 @@ namespace Surface.Pipeline.Debugger
 
             configuration.Incremental = false;
             configuration.InputDirectory = workingDirectory.Combine(new DirectoryPath("../../../../assets"));
-            configuration.OutputDirectory = System.IO.Path.GetFullPath("output"); // relative to bin
+            configuration.OutputDirectory = Path.GetFullPath("output"); // relative to bin
 
             var scanner = new PipelineAssemblyScanner(log, typeof (TextureImporter).Assembly);
             var components = new PipelineComponentCollection(scanner);

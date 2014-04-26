@@ -7,6 +7,7 @@ namespace Surface.Core.Content
     {
         private readonly Stream _stream;
         private readonly GraphicsDevice _device;
+        private readonly IContentService _content;
 
         public GraphicsDevice Device
         {
@@ -18,10 +19,16 @@ namespace Surface.Core.Content
             get { return _stream; }
         }
 
-        public ContentReaderContext(Stream stream, GraphicsDevice device)
+        public IContentService Content
+        {
+            get { return _content; }
+        }
+
+        public ContentReaderContext(Stream stream, GraphicsDevice device, IContentService content)
         {
             _stream = stream;
             _device = device;
+            _content = content;
         }
     }
 }

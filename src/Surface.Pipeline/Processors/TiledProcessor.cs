@@ -7,7 +7,9 @@ using Lunt;
 using Lunt.Diagnostics;
 using Lunt.IO;
 using NTiled;
+using Surface.Core.Primitives;
 using Surface.Pipeline.Content;
+using Path = System.IO.Path;
 
 namespace Surface.Pipeline.Processors
 {
@@ -16,8 +18,7 @@ namespace Surface.Pipeline.Processors
         public override MapContent Process(LuntContext context, TiledMap source)
         {
             var map = new MapContent();
-            map.Width = source.Width;
-            map.Height = source.Height;
+            map.Size = new Size(source.Width, source.Height);
 
             ProcessTilesets(source, map);
             ProcessLayers(source, map);
@@ -33,7 +34,7 @@ namespace Surface.Pipeline.Processors
                 map.Tilesets.Add(new TilesetReference
                 {
                     Index = index,
-                    Asset = new FilePath(string.Concat("tilesets/", System.IO.Path.GetFileNameWithoutExtension(tileset.Image.Source)))
+                    Asset = new FilePath(string.Concat("tilesets/", Path.GetFileNameWithoutExtension(tileset.Image.Source)))
                 });
                 index++;
             }
@@ -42,7 +43,7 @@ namespace Surface.Pipeline.Processors
         private static void ProcessLayers(TiledMap source, MapContent map)
         {
             var layerId = 0;
-            for (int layerIndex = 0; layerIndex < source.Layers.Count; layerIndex++)
+            for (var layerIndex = 0; layerIndex < source.Layers.Count; layerIndex++)
             {
                 var layer = source.Layers[layerIndex];
 
@@ -60,6 +61,7 @@ namespace Surface.Pipeline.Processors
             var content = new TileLayerContent();
             content.Id = id;
             content.Name = layer.Name;
+            content.Opacity = layer.Opacity;
 
             for (var gridIndex = 0; gridIndex < layer.Tiles.Length; gridIndex++)
             {
