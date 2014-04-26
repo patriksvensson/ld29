@@ -4,6 +4,7 @@ namespace Surface.Core
     {
         Nothing = 0,
         Wall = 1,
-        Water = 2
+        Water = 2,
+        Ladder = 3
     }
 }

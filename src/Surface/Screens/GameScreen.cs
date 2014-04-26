@@ -82,6 +82,21 @@ namespace Surface.Screens
                 direction.X = 0;
             }
 
+            if (_keyboard.IsKeyDown(Keys.Up))
+            {
+                var pos = new Vector2(_player.Position.X + 7, _player.Position.Y + 15);
+                if (_scene.Map.IsOnTile(pos, TileType.Ladder))
+                {
+                    direction.Y = -1;
+                    _player.IsClimbing = true;
+                }
+            }
+            else
+            {
+                direction.Y = 0;
+                _player.IsClimbing = false;
+            }
+
             var wasOnGround = _player.IsOnGround;
             _player.IsOnGround = _scene.Map.IsBlocked(_player.BoundingBox);
             if (_player.IsOnGround && !wasOnGround)
@@ -90,7 +105,8 @@ namespace Surface.Screens
                 _player.Position = new Vector2(_player.Position.X, (int)_player.Position.Y / 16 * 16);
             }
 
-            _player.IsInWater = _scene.Map.IsInWater(_player.Position);
+            _player.IsInWater = _scene.Map.IsOnTile(_player.Position, TileType.Water);
+            _player.IsOnLadder = _scene.Map.IsOnTile(_player.Position, TileType.Ladder);
 
             _player.IsJumping = _keyboard.IsKeyDown(Keys.Space);
             _player.Update(gameTime, direction);

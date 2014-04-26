@@ -3,6 +3,7 @@
 
 	<tile x="0" y="0" type="Wall" />
 	<tile x="1" y="0" type="Wall" />
+	<tile x="2" y="0" type="Ladder" />
 
 	<!-- Water -->
 	<tile x="1" y="1" type="Water" />

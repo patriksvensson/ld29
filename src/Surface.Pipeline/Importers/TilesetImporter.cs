@@ -182,6 +182,10 @@ namespace Surface.Pipeline.Importers
             {
                 return TileType.Water;
             }
+            if (value.Equals("Ladder", StringComparison.OrdinalIgnoreCase))
+            {
+                return TileType.Ladder;
+            }
             else
             {
                 return TileType.Nothing;

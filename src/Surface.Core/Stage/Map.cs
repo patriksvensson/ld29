@@ -149,7 +149,7 @@ namespace Surface.Core
             return false;
         }
 
-        public bool IsInWater(Vector2 position)
+        public bool IsOnTile(Vector2 position, TileType type)
         {
             var x = (int)(position.X / 16);
             var y = (int)(position.Y / 16);
@@ -159,7 +159,7 @@ namespace Surface.Core
                 var tile = layer.Tiles[index];
                 if (tile != null)
                 {
-                    if (tile.Type == TileType.Water)
+                    if (tile.Type == type)
                     {
                         return true;
                     }

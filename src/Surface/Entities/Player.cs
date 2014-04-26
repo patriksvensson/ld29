@@ -38,6 +38,8 @@ namespace Surface.Entities
         public bool IsOnGround { get; set; }
         public bool IsJumping { get; set; }
         public bool IsInWater { get; set; }
+        public bool IsOnLadder { get; set; }
+        public bool IsClimbing { get; set; }
 
         public float GillPower
         {
@@ -61,18 +63,18 @@ namespace Surface.Entities
 
             _sprite.Register("Walk-Right", new Animation(
                 new[] {
-                    new Frame(new Cell(0,0), TimeSpan.FromMilliseconds(150)), 
-                    new Frame(new Cell(1,0), TimeSpan.FromMilliseconds(150)), 
-                    new Frame(new Cell(2,0), TimeSpan.FromMilliseconds(150)), 
-                    new Frame(new Cell(1,0), TimeSpan.FromMilliseconds(150)), 
+                    new Frame(new Cell(0,0), TimeSpan.FromMilliseconds(75)), 
+                    new Frame(new Cell(1,0), TimeSpan.FromMilliseconds(75)), 
+                    new Frame(new Cell(2,0), TimeSpan.FromMilliseconds(75)), 
+                    new Frame(new Cell(1,0), TimeSpan.FromMilliseconds(75)), 
                 }, new Size(16, 16)));
 
             _sprite.Register("Walk-Left", new Animation(
                 new[] {
-                    new Frame(new Cell(0,1), TimeSpan.FromMilliseconds(150)), 
-                    new Frame(new Cell(1,1), TimeSpan.FromMilliseconds(150)), 
-                    new Frame(new Cell(2,1), TimeSpan.FromMilliseconds(150)), 
-                    new Frame(new Cell(1,1), TimeSpan.FromMilliseconds(150)), 
+                    new Frame(new Cell(0,1), TimeSpan.FromMilliseconds(75)), 
+                    new Frame(new Cell(1,1), TimeSpan.FromMilliseconds(75)), 
+                    new Frame(new Cell(2,1), TimeSpan.FromMilliseconds(75)), 
+                    new Frame(new Cell(1,1), TimeSpan.FromMilliseconds(75)), 
                 }, new Size(16, 16)));
 
             _sprite.Register("Idle-Right", new Animation(
@@ -90,6 +92,14 @@ namespace Surface.Entities
                     new Frame(new Cell(2,3), TimeSpan.FromMilliseconds(150)), 
                     new Frame(new Cell(1,3), TimeSpan.FromMilliseconds(150)), 
                 }, new Size(16, 16)));
+
+            _sprite.Register("Climb", new Animation(
+                new[] {
+                    new Frame(new Cell(0,4), TimeSpan.FromMilliseconds(150)), 
+                    new Frame(new Cell(1,4), TimeSpan.FromMilliseconds(150)), 
+                    new Frame(new Cell(2,4), TimeSpan.FromMilliseconds(150)), 
+                    new Frame(new Cell(1,4), TimeSpan.FromMilliseconds(150)), 
+                }, new Size(16, 16)));
         }
 
         public void Update(GameTime gameTime, Vector2 direction)
@@ -100,14 +110,22 @@ namespace Surface.Entities
             var appliedGravity = (IsInWater ? _waterGravity : _gravity) * dt;
             _velocity += appliedGravity;
 
-            if (IsOnGround)
+            if (IsOnLadder && IsClimbing)
             {
-                // No velocity on the ground.
-                _velocity.Y = 0;
+                _velocity = Vector2.Zero;
+            }
+            else
+            {
 
-                if (IsJumping)
+                if (IsOnGround)
                 {
-                    _velocity += _jumpForce;
+                    // No velocity on the ground.
+                    _velocity.Y = 0;
+
+                    if (IsJumping)
+                    {
+                        _velocity += _jumpForce;
+                    }
                 }
             }
 
@@ -122,7 +140,14 @@ namespace Surface.Entities
             }
             else
             {
-                _sprite.Play("Idle-Left");   
+                if (IsOnLadder && IsClimbing)
+                {
+                    _sprite.Play("Climb");
+                }
+                else
+                {
+                    _sprite.Play("Idle-Left");   
+                }                
             }
 
             if (IsInWater)
