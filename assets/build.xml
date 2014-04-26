@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build version="1.0">
+	<asset path="textures/lol.png" />
+	<asset path="textures/wtf.jpg" />
+</build>
