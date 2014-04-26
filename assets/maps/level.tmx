@@ -5,7 +5,7 @@
  </tileset>
  <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+2VQQ6AIAwE0YT/f9kPeDB2y7bNbDLXugMCaxFCCCGEEDI3d5AtmKHgCrIFMyqARy0meXzB3bPTnmWvHR54ZPg4z7naQ4Hb48981ffxwCPLIxvnOp4Cj1pE3otuTHB4c3F3wQOPk70631eqO7sCuNTziHq5+6pc3F1VLu6eKhd3R5WLu5/6/+rGA4B77YMQJwAA
+   H4sIAAAAAAAAC+3VQQ6EMAwEwYCU/P/JfIADwuOMHfWhrmEaWHaNMRYAAABwqDtoCs5QuIKm4IwK6KjlpI4v3Ds7PbPse0cHHRk9zt+5ukPB3fHnfNX16aAjqyOb8z7uQkctkf+Lbk5oeGtxb6GDjp27On+vVN/sCmip1xHtcu9Vtbi3qlrcO1Ut7o2qFvc+9fvVzQMU6ylnECcAAA==
   </data>
  </layer>
  <layer name="Foreground" width="50" height="50">

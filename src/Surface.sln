@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surface.Pipeline", "Surface
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surface.Core", "Surface.Core\Surface.Core.csproj", "{265C0C79-75FC-492C-874F-C3A44064325D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surface.Pipeline.Debugger", "Surface.Pipeline.Debugger\Surface.Pipeline.Debugger.csproj", "{7E3C4EAF-AF3A-49C1-8D5F-7A1579E41288}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{265C0C79-75FC-492C-874F-C3A44064325D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{265C0C79-75FC-492C-874F-C3A44064325D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{265C0C79-75FC-492C-874F-C3A44064325D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E3C4EAF-AF3A-49C1-8D5F-7A1579E41288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3C4EAF-AF3A-49C1-8D5F-7A1579E41288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3C4EAF-AF3A-49C1-8D5F-7A1579E41288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3C4EAF-AF3A-49C1-8D5F-7A1579E41288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Ninject;
 using Surface.Core.Content;
 using Surface.Core.Content.Readers;
+using Surface.Core.Graphics;
 using Surface.Core.Input;
 using Surface.Core.Screens;
 
@@ -47,6 +48,8 @@ namespace Surface.Core
                 // Since we need to register the graphics device before
                 // setting the first screen, we do things this way...
                 _kernel.Bind<GraphicsDevice>().ToConstant(e.GraphicsDevice);
+
+                _kernel.Bind<VirtualScreen>().ToSelf().InSingletonScope();
 
                 // Register services.
                 _kernel.Bind<IContentService>().To<ContentService>().InSingletonScope();

@@ -32,7 +32,13 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Lunt.Core">
       <HintPath>..\..\tools\Lunt.Core.dll</HintPath>
     </Reference>
@@ -50,14 +56,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Importers\TextureImporter.cs" />
+    <Compile Include="Importers\TiledImporter.cs" />
+    <Compile Include="Content\MapContent.cs" />
+    <Compile Include="Processors\TextureProcessor.cs" />
+    <Compile Include="Processors\TiledProcessor.cs" />
+    <Compile Include="Content\TileContent.cs" />
+    <Compile Include="Content\TileLayerContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextureContent.cs" />
+    <Compile Include="Content\TextureContent.cs" />
+    <Compile Include="Content\TilesetReference.cs" />
+    <Compile Include="Writers\MapWriter.cs" />
     <Compile Include="Writers\TextureWriter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(TargetPath) $(SolutionDir)..\tools /y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

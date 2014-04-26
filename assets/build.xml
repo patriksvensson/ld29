@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <build version="1.0">
-	<asset path="textures/lol.png" />
-	<asset path="textures/wtf.jpg" />
+	<asset path="textures/tilesets/lol.png">
+		<metadata key="scale">4</metadata>
+	</asset>
+	<asset path="maps/level.tmx" />
 </build>

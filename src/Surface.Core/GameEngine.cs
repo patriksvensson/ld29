@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ninject;
+using Surface.Core.Graphics;
 using Surface.Core.Input;
 
 namespace Surface.Core
@@ -15,15 +16,17 @@ namespace Surface.Core
     {
         private readonly GraphicsDeviceManager _graphics;
         private readonly KeyboardInput _keyboard;
+        private readonly VirtualScreen _screen;
         private Action<GameEngine> _initializeCallback = e => { };
 
-        public GameEngine(KeyboardInput keyboard)
+        public GameEngine(KeyboardInput keyboard, VirtualScreen screen)
         {
             _keyboard = keyboard;
+            _screen = screen;
 
             _graphics = new GraphicsDeviceManager(this);
-            _graphics.PreferredBackBufferWidth = 640;
-            _graphics.PreferredBackBufferHeight = 480;
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 600;
             _graphics.IsFullScreen = false;
             _graphics.SynchronizeWithVerticalRetrace = true;
             _graphics.ApplyChanges();
@@ -43,8 +46,19 @@ namespace Surface.Core
         protected override void Initialize()
         {
             _initializeCallback(this);
+            //_screen.Initialize(GraphicsDevice, 160, 120);
             base.Initialize();
         }
+
+        #region Overrides of Game
+
+        protected override void LoadContent()
+        {
+            //_screen.LoadContent();
+            base.LoadContent();
+        }
+
+        #endregion
 
         public void SetFirstScreen(Screen screen)
         {
@@ -69,7 +83,10 @@ namespace Surface.Core
         {
             GraphicsDevice.Clear(Color.Black);
 
+            // Removed virtual screen for sub pixel movement (scaled sprites)
+            //_screen.BeginDraw();           
             base.Draw(gameTime);
+            //_screen.EndDraw();
         }
     }
 }

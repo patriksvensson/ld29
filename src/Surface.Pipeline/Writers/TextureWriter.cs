@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Lunt;
 using Lunt.IO;
+using Surface.Pipeline.Content;
 
 namespace Surface.Pipeline.Writers
 {

@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace Surface.Pipeline
+namespace Surface.Pipeline.Content
 {
     public sealed class TextureContent
     {

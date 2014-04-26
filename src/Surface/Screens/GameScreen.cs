@@ -16,7 +16,9 @@ namespace Surface.Screens
         private readonly GraphicsDevice _device;
         private readonly KeyboardInput _keyboard;
         private readonly IContentService _content;
+        
         private SpriteBatch _batch;
+        private Texture2D _texture;
 
         public GameScreen(GraphicsDevice device, KeyboardInput keyboard, IContentService content)
         {
@@ -25,17 +27,14 @@ namespace Surface.Screens
             _content = content;
         }
 
-        #region Overrides of Screen
-
         public override void Initialize()
         {
             _batch = new SpriteBatch(_device);
         }
 
-        #endregion
-
         public override void LoadContent()
-        {          
+        {
+            _texture = _content.Load<Texture2D>("textures/tilesets/lol.png");
         }
 
         public override void Update(GameTime gameTime)
@@ -49,6 +48,10 @@ namespace Surface.Screens
         public override void Render(GameTime gameTime)
         {
             _device.Clear(Color.CornflowerBlue);
+
+            _batch.Begin();
+            _batch.Draw(_texture, new Vector2(10,10));
+            _batch.End();
         }
     }
 }
