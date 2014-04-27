@@ -67,6 +67,8 @@
     <Compile Include="Primitives\Cell.cs" />
     <Compile Include="Primitives\Frame.cs" />
     <Compile Include="Primitives\Size.cs" />
+    <Compile Include="Stage\Entity.cs" />
+    <Compile Include="Stage\IEntityFactory.cs" />
     <Compile Include="Stage\Layer.cs" />
     <Compile Include="Stage\Scene.cs" />
     <Compile Include="Stage\Tile.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Ninject;
 using Surface.Core;
+using Surface.Core.Stage;
 using Surface.Screens;
 
 namespace Surface
@@ -22,6 +23,7 @@ namespace Surface
         private static void Register(IKernel kernel)
         {
             // Register game related services here.
+            kernel.Bind<IEntityFactory>().To<EntityFactory>().InSingletonScope();
 
             kernel.Bind<GameScreen>().ToSelf().InSingletonScope();
         }

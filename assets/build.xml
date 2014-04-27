@@ -5,4 +5,5 @@
 	<asset path="tilesets/default.tileset" />
 	<asset path="textures/player.png" />
 	<asset path="textures/playersheet.png" />
+	<asset path="textures/bottle.png" />
 </build>

@@ -54,6 +54,26 @@ namespace Surface.Pipeline.Writers
                 writer.Write7BitEncodedInteger(tile.TilesetIndex);
                 writer.Write7BitEncodedInteger(tile.GridIndex);
             }
+
+            // Write all entities.
+            writer.Write(layer.Entities.Count);
+            foreach (var entity in layer.Entities)
+            {
+                writer.Write(entity.Name);
+                writer.Write(entity.Type);
+                writer.Write(entity.Position.X);
+                writer.Write(entity.Position.Y);
+                writer.Write(entity.Size.Width);
+                writer.Write(entity.Size.Height);
+
+                // Write properties.
+                writer.Write(entity.Properties.Count);
+                foreach (var property in entity.Properties)
+                {
+                    writer.Write(property.Name);
+                    writer.Write(property.Value);
+                }
+            }
         }
     }
 }

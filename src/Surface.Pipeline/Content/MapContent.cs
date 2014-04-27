@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Surface.Core.Primitives;
 
 namespace Surface.Pipeline.Content
@@ -14,6 +15,11 @@ namespace Surface.Pipeline.Content
         {
             Tilesets = new List<TilesetReference>();
             Layers = new List<TileLayerContent>();
+        }
+
+        public LayerContent GetLayerById(int id)
+        {
+            return Layers.Single(x => x.Id == id);
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Surface.Screens
             _player.LoadContent(_content);
 
             _scene.Initialize();
-            _scene.LoadContent();
+            _scene.LoadContent(_content);
 
             _camera.SetFocus(_player);
             _camera.Initialize(_scene.Map.GetSizeInPixels());
@@ -130,6 +130,15 @@ namespace Surface.Screens
                     // Draw player
                     //_batch.Draw(_playerTexture, _camera.Transform(_player.Position));
                     _player.Draw(gameTime, _batch, _camera);
+                }
+
+                // W00t...
+                foreach (var entity in _scene.Entities)
+                {
+                    if (entity.Layer == layerIndex)
+                    {
+                        entity.Draw(gameTime, _batch, _camera);
+                    }
                 }
             }
 

@@ -2,12 +2,9 @@
 
 namespace Surface.Pipeline.Content
 {
-    public sealed class TileLayerContent
+    public sealed class TileLayerContent : LayerContent
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
         public List<TileContent> Tiles { get; set; }
-        public float Opacity { get; set; }
 
         public TileLayerContent()
         {

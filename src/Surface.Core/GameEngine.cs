@@ -27,7 +27,7 @@ namespace Surface.Core
             _graphics = new GraphicsDeviceManager(this);
             _graphics.PreferredBackBufferWidth = 640;
             _graphics.PreferredBackBufferHeight = 480;
-            _graphics.IsFullScreen = false;
+            _graphics.IsFullScreen = true;            
             _graphics.SynchronizeWithVerticalRetrace = true;
             _graphics.ApplyChanges();
 

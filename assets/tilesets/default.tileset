@@ -24,6 +24,24 @@
 		<frame x="3" y="3" delay="150" />
 		<frame x="2" y="3" delay="150" />
 		<frame x="1" y="3" delay="150" />
+	</tile>
+
+	<!-- Torch -->
+	<tile x="0" y="4" type="Nothing" >
+		<frame x="0" y="4" delay="150" />
+		<frame x="1" y="4" delay="150" />
+		<frame x="2" y="4" delay="150" />
+		<frame x="1" y="4" delay="150" />
+	</tile>	
+
+	<!-- Message in a bottle -->
+	<tile x="0" y="5" type="Nothing" >
+		<frame x="0" y="5" delay="150" />
+		<frame x="1" y="5" delay="150" />
+		<frame x="2" y="5" delay="150" />
+		<frame x="3" y="5" delay="150" />
+		<frame x="2" y="5" delay="150" />
+		<frame x="1" y="5" delay="150" />
 	</tile>	
 
 </tileset>

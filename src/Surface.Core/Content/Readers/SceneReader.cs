@@ -3,12 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 using Surface.Core.Primitives;
+using Surface.Core.Stage;
 
 namespace Surface.Core.Content.Readers
 {
     public class SceneReader : ContentReader<Scene>
     {
+        private readonly IEntityFactory _factory;
+
+        public SceneReader(IEntityFactory factory)
+        {
+            _factory = factory;
+        }
+
         public override Scene Read(ContentReaderContext context)
         {
             using (var reader = new BinaryReader(context.Stream))
@@ -17,6 +26,7 @@ namespace Surface.Core.Content.Readers
                 var mapTileCount = size.Width * size.Height;
 
                 var map = new Map(string.Empty, size);
+                var entities = new List<Entity>();
 
                 // Read tilesets.
                 var tilesetCount = reader.ReadInt32();
@@ -52,10 +62,33 @@ namespace Surface.Core.Content.Readers
                         tiles[gridIndex] = tile;
                     }
 
+                    var entityCount = reader.ReadInt32();
+                    for (int n = 0; n < entityCount; n++)
+                    {
+                        var data = new EntityData();
+                        data.Name = reader.ReadString();
+                        data.Type = reader.ReadString();
+                        data.Position = new Vector2(reader.ReadSingle(), reader.ReadSingle());
+                        data.Size = new Size(reader.ReadInt32(), reader.ReadInt32());
+
+                        var propertyCount = reader.ReadInt32();
+                        for (int m = 0; m < propertyCount; m++)
+                        {
+                            var propKey = reader.ReadString();
+                            var propValue = reader.ReadString();
+                            data.Properties.Add(propKey, propValue);
+                        }
+
+                        var entity = _factory.Create(data);
+                        entity.Layer = layerId;
+                        entities.Add(entity);
+                    }
+
                     var layer = new Layer(layerId, layerName, tiles, layerOpacity);
                     map.AddLayer(layerId, layer);
                 }
-                return new Scene(map);
+
+                return new Scene(map, entities);
             }
         }
     }

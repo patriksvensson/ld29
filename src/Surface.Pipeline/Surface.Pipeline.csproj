@@ -56,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryWriterExtensions.cs" />
+    <Compile Include="Content\EntityContent.cs" />
+    <Compile Include="Content\LayerContent.cs" />
+    <Compile Include="Content\LayerContentType.cs" />
     <Compile Include="Content\TilesetFrameContent.cs" />
     <Compile Include="Content\TilesetTileContent.cs" />
     <Compile Include="FilePathExtensions.cs" />
@@ -92,6 +95,7 @@
     <PostBuildEvent>xcopy $(TargetPath) $(SolutionDir)..\tools /y
 xcopy $(TargetDir)Surface.Core.dll $(SolutionDir)..\tools /y</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets" Condition="Exists('..\packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

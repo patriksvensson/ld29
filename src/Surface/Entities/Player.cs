@@ -16,11 +16,9 @@ namespace Surface.Entities
         private Vector2 _velocity;
         private readonly Vector2 _gravity;
         private readonly Vector2 _waterGravity;
-        private Vector2 _position;
-        private Vector2 _direction;
-        private Vector2 _jumpForce;
+        private readonly Vector2 _jumpForce;
+        private Vector2 _position;        
         private float _gillPower; // pun intended
-        private float _jumpCutOff;
 
         private Sprite _sprite;
 
@@ -40,6 +38,7 @@ namespace Surface.Entities
         public bool IsInWater { get; set; }
         public bool IsOnLadder { get; set; }
         public bool IsClimbing { get; set; }
+        public bool IsMoving { get; set; }
 
         public float GillPower
         {
@@ -51,8 +50,7 @@ namespace Surface.Entities
             _position = new Vector2(1100, 271);
             _gravity = new Vector2(0, 150);
             _waterGravity = new Vector2(0, 50);
-            _jumpForce = new Vector2(0, -150);
-            _jumpCutOff = -180f;
+            _jumpForce = new Vector2(0, -120);
             _gillPower = 100f;
         }
 
@@ -116,12 +114,9 @@ namespace Surface.Entities
             }
             else
             {
-
                 if (IsOnGround)
                 {
-                    // No velocity on the ground.
                     _velocity.Y = 0;
-
                     if (IsJumping)
                     {
                         _velocity += _jumpForce;
@@ -130,6 +125,8 @@ namespace Surface.Entities
             }
 
             var appliedDirection = direction * 128 * dt;
+
+            // Chose what animation to play.
             if (direction.X > 0)
             {
                 _sprite.Play("Walk-Right");
@@ -146,8 +143,8 @@ namespace Surface.Entities
                 }
                 else
                 {
-                    _sprite.Play("Idle-Left");   
-                }                
+                    _sprite.Play("Idle-Left");
+                }
             }
 
             if (IsInWater)
