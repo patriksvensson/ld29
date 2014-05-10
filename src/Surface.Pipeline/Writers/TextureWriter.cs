@@ -10,9 +10,9 @@ using Surface.Pipeline.Content;
 
 namespace Surface.Pipeline.Writers
 {
-    public sealed class TextureWriter : LuntWriter<TextureContent>
+    public sealed class TextureWriter : Writer<TextureContent>
     {
-        public override void Write(LuntContext context, IFile target, TextureContent value)
+        public override void Write(Context context, IFile target, TextureContent value)
         {
             using (var stream = target.Open(FileMode.Create, FileAccess.Write, FileShare.None))
             {

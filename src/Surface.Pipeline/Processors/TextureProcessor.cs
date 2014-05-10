@@ -11,9 +11,9 @@ using Surface.Pipeline.Content;
 
 namespace Surface.Pipeline.Processors
 {
-    public sealed class TextureProcessor : LuntProcessor<TextureContent, TextureContent>
+    public sealed class TextureProcessor : Processor<TextureContent, TextureContent>
     {
-        public override TextureContent Process(LuntContext context, TextureContent source)
+        public override TextureContent Process(Context context, TextureContent source)
         {
             if (context.Asset.Metadata.IsDefined("Scale"))
             {

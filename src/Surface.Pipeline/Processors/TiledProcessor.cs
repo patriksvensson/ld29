@@ -14,9 +14,9 @@ using Path = System.IO.Path;
 
 namespace Surface.Pipeline.Processors
 {
-    public class TiledProcessor : LuntProcessor<TiledMap, MapContent>
+    public class TiledProcessor : Processor<TiledMap, MapContent>
     {
-        public override MapContent Process(LuntContext context, TiledMap source)
+        public override MapContent Process(Context context, TiledMap source)
         {
             var map = new MapContent();
             map.Size = new Size(source.Width, source.Height);

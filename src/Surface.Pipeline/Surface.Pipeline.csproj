@@ -39,8 +39,8 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Lunt.Core">
-      <HintPath>..\..\tools\Lunt.Core.dll</HintPath>
+    <Reference Include="Lunt">
+      <HintPath>..\packages\Lunt.0.0.3\lib\net45\Lunt.dll</HintPath>
     </Reference>
     <Reference Include="NTiled">
       <HintPath>..\packages\NTiled.0.1.3\lib\net45\NTiled.dll</HintPath>

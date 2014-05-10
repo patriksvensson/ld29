@@ -15,10 +15,10 @@ using System.Drawing;
 
 namespace Surface.Pipeline.Importers
 {
-    [LuntImporter(".tileset")]
-    public class TilesetImporter : LuntImporter<TilesetContent>
+    [Importer(".tileset")]
+    public class TilesetImporter : Importer<TilesetContent>
     {
-        public override TilesetContent Import(LuntContext context, IFile file)
+        public override TilesetContent Import(Context context, IFile file)
         {
             TilesetContent tileset = new TilesetContent();
             XDocument document = LoadXml(file);

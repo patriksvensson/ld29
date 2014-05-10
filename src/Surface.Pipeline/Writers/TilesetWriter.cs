@@ -6,9 +6,9 @@ using Surface.Pipeline.Content;
 
 namespace Surface.Pipeline.Writers
 {
-    public sealed class TilesetWriter : LuntWriter<TilesetContent>
+    public sealed class TilesetWriter : Writer<TilesetContent>
     {
-        public override void Write(LuntContext context, IFile target, TilesetContent value)
+        public override void Write(Context context, IFile target, TilesetContent value)
         {
             using (var stream = target.Open(FileMode.Create, FileAccess.Write, FileShare.None))
             using (var writer = new BinaryWriter(stream))

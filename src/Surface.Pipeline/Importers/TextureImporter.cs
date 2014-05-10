@@ -10,10 +10,10 @@ using Surface.Pipeline.Processors;
 
 namespace Surface.Pipeline.Importers
 {
-    [LuntImporter(".png", ".jpg", ".bmp", DefaultProcessor = typeof(TextureProcessor))]
-    public sealed class TextureImporter : LuntImporter<TextureContent>
+    [Importer(".png", ".jpg", ".bmp", DefaultProcessor = typeof(TextureProcessor))]
+    public sealed class TextureImporter : Importer<TextureContent>
     {
-        public override TextureContent Import(LuntContext context, IFile file)
+        public override TextureContent Import(Context context, IFile file)
         {
             return new TextureContent { Bitmap = new Bitmap(file.Path.FullPath, false)};
         }

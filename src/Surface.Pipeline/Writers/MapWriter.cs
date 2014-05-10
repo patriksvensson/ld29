@@ -11,9 +11,9 @@ using Surface.Pipeline.Content;
 
 namespace Surface.Pipeline.Writers
 {
-    public sealed class MapWriter : LuntWriter<MapContent>
+    public sealed class MapWriter : Writer<MapContent>
     {
-        public override void Write(LuntContext context, IFile target, MapContent value)
+        public override void Write(Context context, IFile target, MapContent value)
         {
             using (var stream = target.Open(FileMode.Create, FileAccess.Write, FileShare.None))
             using (var writer = new BinaryWriter(stream))
