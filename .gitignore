@@ -9,7 +9,7 @@
 
 build-results/
 tools/fake/
-tools/xunit.runners/
+tools/lunt.make/
 
 # mstest test results
 TestResults
